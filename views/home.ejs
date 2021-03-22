@@ -1,0 +1,41 @@
+<html>
+    <head>
+<title> <%= title %></title>
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.2/css/all.css" 
+integrity="sha384-vSIIfh2YWi9wW0r9iZe7RJPrKwp6bG+s9QZMoITbCckVJqGCCRhc+ccxNcdpHuYu" 
+crossorigin="anonymous">
+<!-- we shall put evrey other link above css file -->
+<link rel="stylesheet" href="/css/home.css">
+    </head>
+    <body>
+        <h1 id="heading1">
+            <i class="fas fa-address-book"></i>
+            CONTACT LIST!!!
+        </h1>
+        <div id="contact-container">
+        <ul>
+            <% for(i of contact_list){%>
+                <li class="contact">
+                    <div class="details">
+                    <p><%= i.name %></p>
+                    <p><%= i.phone %></p>
+                </div>
+                <div class="delete-button">
+                    <a href="/del-contact/?id=<%= i._id %>">
+                        <i class="fas fa-window-close"></i>
+                    </a>
+                </div>
+                </li>
+            <%}%>
+        </ul>
+        </div>
+        <div>
+        <form id="form-css" action="/contact-add" method="POST">
+          <input type="text" name="name" placeholder="ENTER NAME" required>
+          <input type="text" name="phone" placeholder="ENTER PH:NO" required>
+          <button type="submit">ADD CONTACT</button>
+        </form>
+        </div>
+        <script type="text/javascript" src="/js/home.js"></script>
+    </body>
+</html>
